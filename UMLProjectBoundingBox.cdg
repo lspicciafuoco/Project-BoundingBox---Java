@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="ProjectBoundingBox">
+  <ClassDiagramComponents>
+    <Class name="BoundingBox" package="projectboundingbox" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="xMin" type="float" visibility="private"/>
+        <Field name="xMax" type="float" visibility="private"/>
+        <Field name="yMin" type="float" visibility="private"/>
+        <Field name="yMax" type="float" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="float" name="xMin"/>
+          <Argument type="float" name="xMax"/>
+          <Argument type="float" name="yMin"/>
+          <Argument type="float" name="yMax"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getXMin" returnType="float" visibility="public"/>
+        <Method name="getXMax" returnType="float" visibility="public"/>
+        <Method name="getYMin" returnType="float" visibility="public"/>
+        <Method name="getYMax" returnType="float" visibility="public"/>
+        <Method name="contiene" returnType="boolean" visibility="public">
+          <Argument type="BoundingBox" name="bb"/>
+        </Method>
+        <Method name="isContained" returnType="boolean" visibility="public">
+          <Argument type="BoundingBox" name="bb"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Cerchio" package="projectboundingbox" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="raggio" type="float" visibility="private"/>
+        <Field name="centro" type="Punto" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="float" name="raggio"/>
+          <Argument type="Punto" name="centro"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getRaggio" returnType="double" visibility="public"/>
+        <Method name="getCentro" returnType="Punto" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Figura" package="projectboundingbox" visibility="public" isAbstract="true" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="bb" type="BoundingBox" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Main" package="projectboundingbox" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Punto" package="projectboundingbox" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="x" type="float" visibility="private"/>
+        <Field name="y" type="float" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="float" name="x"/>
+          <Argument type="float" name="y"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getX" returnType="float" visibility="public"/>
+        <Method name="getY" returnType="float" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="centro" source="projectboundingbox.Cerchio" target="projectboundingbox.Punto" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="projectboundingbox.BoundingBox" target="projectboundingbox.BoundingBox" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="bb" source="projectboundingbox.Figura" target="projectboundingbox.BoundingBox" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="projectboundingbox.Cerchio" target="projectboundingbox.Punto" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="projectboundingbox.Cerchio" target="projectboundingbox.Figura"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
